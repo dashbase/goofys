@@ -776,8 +776,8 @@ func (fs *Goofys) ForgetInode(
 		delete(fs.inodes, op.Inode)
 		fs.forgotCnt += 1
 
-		if parent != nil {
-			parent.removeChildUnlocked(inode)
+		if inode.Parent != nil {
+			inode.Parent.removeChildUnlocked(inode)
 		}
 	}
 
